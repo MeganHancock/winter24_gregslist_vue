@@ -1,3 +1,4 @@
+
 <template>
     <div class="container-fluid">
         <section class="row">
@@ -12,15 +13,30 @@
 
 
 <script>
+import { onMounted } from 'vue';
+import Pop from '../utils/Pop.js';
+import { housesService } from '../services/HousesService.js'
+import { logger } from '../utils/Logger.js';
+
 export default {
 
     setup() {
 
-
-        return {
-
-
+        async function getHouses() {
+            try {
+                await housesService.getHouses()
+            } catch (error) {
+                Pop.error(error)
+            }
         }
+
+        onMounted(() => {
+            logger.log('page is mounted')
+            getHouses()
+        })
+
+        return {}
+
     }
 }
 
