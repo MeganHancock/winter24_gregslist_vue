@@ -7,9 +7,13 @@
             </div>
         </section>
 
-        <section v-for="house in houses" :key="house.id" class="row justify-content-around">
-            <div class="col-md-4">
-                {{ house.price }}
+        <section class="row justify-content-center">
+            <div v-for="house in houses" :key="house.id" class="col-md-4 mb-3 house-card">
+                <img :src="house.imgUrl" class="img-fluid"
+                    :alt="'A house with ' + house.bedrooms + ' bedrooms and ' + house.bathrooms + ' bathrooms'">
+                <div class="house-caption">
+                    <p class="fs-5 mb-1 ms-1">{{ house.bedrooms }} bedroom {{ house.bathrooms }} bathroom house</p>
+                </div>
             </div>
         </section>
 
@@ -54,4 +58,25 @@ export default {
 </script>
 
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+img {
+    height: 40vh;
+    width: 40vh;
+    border-radius: 16px;
+    object-fit: cover;
+    object-position: center;
+    box-shadow: 2px 3px 10px black;
+}
+
+.house-card {
+    position: relative;
+}
+
+.house-caption {
+    position: absolute;
+    bottom: 0;
+    color: white;
+    text-shadow: 1px 1px 3px black;
+    font-weight: bold;
+}
+</style>
