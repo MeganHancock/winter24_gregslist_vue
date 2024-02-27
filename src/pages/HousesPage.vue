@@ -1,17 +1,15 @@
 
 <template>
-    <div class="container-fluid">
+    <div class="container">
         <section class="row">
-            <div class="col-12">
-                <h1 class="m-3">
-                    Houses
-                </h1>
+            <div class="col-12 my-2">
+                <h1>Houses</h1>
             </div>
         </section>
 
-        <section class="row">
-            <div class="col-4">
-                {{ houses }}
+        <section v-for="house in houses" :key="house.id" class="row justify-content-around">
+            <div class="col-md-4">
+                {{ house.price }}
             </div>
         </section>
 
