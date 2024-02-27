@@ -8,15 +8,24 @@
                 </h1>
             </div>
         </section>
+
+        <section class="row">
+            <div class="col-4">
+                {{ houses }}
+            </div>
+        </section>
+
+
     </div>
 </template>
 
 
 <script>
-import { onMounted } from 'vue';
+import { computed, onMounted } from 'vue';
 import Pop from '../utils/Pop.js';
 import { housesService } from '../services/HousesService.js'
 import { logger } from '../utils/Logger.js';
+import { AppState } from '../AppState.js'
 
 export default {
 
@@ -35,7 +44,10 @@ export default {
             getHouses()
         })
 
-        return {}
+        return {
+            houses: computed(() => AppState.houses)
+
+        }
 
     }
 }
