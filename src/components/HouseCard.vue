@@ -1,9 +1,12 @@
 <template>
-    <img :src="houseProp.imgUrl" class="img-fluid"
-        :alt="'A house with ' + houseProp.bedrooms + ' bedrooms and ' + houseProp.bathrooms + ' bathrooms'">
-    <div class="house-caption">
-        <p class="fs-5 mb-1 ms-1">{{ houseProp.bedrooms }} bedroom {{ houseProp.bathrooms }} bathroom house</p>
-    </div>
+    <router-link :to="{ name: 'HouseDetails', params: { houseId: houseProp.id } }">
+        <img :src="houseProp.imgUrl" class="img-fluid"
+            :alt="'A house with ' + houseProp.bedrooms + ' bedrooms and ' + houseProp.bathrooms + ' bathrooms'"
+            role="button">
+        <div class="house-caption">
+            <p class="fs-5 mb-1 ms-1">{{ houseProp.bedrooms }} bedroom {{ houseProp.bathrooms }} bathroom house</p>
+        </div>
+    </router-link>
 </template>
 
 
@@ -12,7 +15,6 @@
 import { computed } from 'vue';
 import { AppState } from '../AppState.js';
 import { House } from '../models/House.js';
-
 export default {
     props: {
         houseProp: { type: House, required: true }

@@ -11,5 +11,8 @@ export const AppState = reactive({
   activeCar: null,
 
   /** @type {import('./models/houses.js').House[]} */
-  houses: []
+  houses: [],
+
+  /** @type {import('./models/House.js').House | null} */
+  activeHouse: null
 })
